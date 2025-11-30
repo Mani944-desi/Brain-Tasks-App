@@ -4,18 +4,23 @@ metadata:
   name: brain-tasks-deployment
   labels:
     app: brain-tasks-app
+
 spec:
   replicas: 2
+
   selector:
     matchLabels:
       app: brain-tasks-app
+
   template:
     metadata:
       labels:
         app: brain-tasks-app
+
     spec:
       containers:
         - name: brain-tasks-container
-          image: <REPO_URI>:latest
+          image: 931774524444.dkr.ecr.us-west-2.amazonaws.com/brain-tasks-app:latest
           ports:
             - containerPort: 80
+
