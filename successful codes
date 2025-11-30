@@ -1,0 +1,39 @@
+********************************************************************************************************************************
+ubuntu@ip-172-31-27-226:~/Brain-Tasks-App$ aws ecr describe-images \
+  --repository-name brain-tasks-app \
+  --region us-west-2 \
+  --query 'imageDetails[*].imageTags'
+[
+    [
+        "latest",
+        "9d209c3"
+    ]
+]
+
+*************************************************************************************************************************************************************
+
+ubuntu@ip-172-31-27-226:~/Brain-Tasks-App$ kubectl get svc
+kubectl get endpoints brain-tasks-service
+NAME                  TYPE           CLUSTER-IP    EXTERNAL-IP                                                              PORT(S)        AGE
+brain-tasks-service   LoadBalancer   10.100.3.54   ab0d858ab7fd94008872bfa36812bbc4-789122189.us-west-2.elb.amazonaws.com   80:32452/TCP   93m
+kubernetes            ClusterIP      10.100.0.1    <none>                                                                   443/TCP        103m
+NAME                  ENDPOINTS                           AGE
+brain-tasks-service   192.168.20.4:80,192.168.82.216:80   93m
+
+*********************************************************************************************************************************************************************************
+
+ubuntu@ip-172-31-27-226:~/Brain-Tasks-App$ kubectl get pods -o wide
+NAME                                      READY   STATUS    RESTARTS   AGE   IP               NODE                                          NOMINATED NODE   READINESS GATES
+brain-tasks-deployment-7c6f55cd49-5vt6x   1/1     Running   0          80m   192.168.82.216   ip-192-168-64-10.us-west-2.compute.internal   <none>           <none>
+brain-tasks-deployment-7c6f55cd49-c2mpk   1/1     Running   0          80m   192.168.20.4     ip-192-168-0-35.us-west-2.compute.internal    <none>           <none>
+ubuntu@ip-172-31-27-226:~/Brain-Tasks-App$ kubectl get svc
+
+******************************************************************************************************************************************************************************************
+
+ubuntu@ip-172-31-27-226:~/Brain-Tasks-App$ kubectl get nodes
+NAME                                          STATUS   ROLES    AGE   VERSION
+ip-192-168-0-35.us-west-2.compute.internal    Ready    <none>   96m   v1.32.9-eks-ecaa3a6
+ip-192-168-64-10.us-west-2.compute.internal   Ready    <none>   96m   v1.32.9-eks-ecaa3a6
+
+***************************************************************************************************************************************************************************************************
+
